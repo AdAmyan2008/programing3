@@ -1,8 +1,7 @@
-class Puple {
+var LivingCreature = require("./LivingCreature")
+module.exports =  class Puple extends LivingCreature {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.energy = 10;
+        super(x,y)
         this.directions = [];
 
     }
@@ -21,16 +20,7 @@ class Puple {
 
     chooseCell(character) {
         this.getNewCoordinates()
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
+        super.chooseCell(character)
         return found;
     }
 

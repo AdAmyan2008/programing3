@@ -1,4 +1,5 @@
-function matrixGenerate(matLen, gr, grEat, pr, puple, bomb) {
+var LivingCreature = require("./LivingCreature")
+module.exports = function matrixGenerate(matLen, gr, grEat, pr, puple, bomb) {
     let matrix = []
     for (let i = 0; i < matLen; i++) {
         matrix.push([])
