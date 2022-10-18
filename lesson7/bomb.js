@@ -57,6 +57,8 @@ module.exports =  class Bomb {
     eat() {
         let emptyCelss = this.chooseCell(2)
         let newCell = random(emptyCelss)
+        let emptyCelss1 = this.chooseCell(3)
+        let newCell1 = random(emptyCelss1)
         if (newCell) {
             this.energy++
             let newX = newCell[0]
