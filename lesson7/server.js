@@ -6,7 +6,7 @@ var io = require('socket.io')(server);
 var fs = require("fs");
 app.use(express.static("."));
 
-app.get('/', function(req, res){
+app.get('/', function (req, res) {
     res.redirect('index.html');
 });
 
@@ -68,10 +68,74 @@ function matrixGenerate(matLen, gr, grEat, pr, puple, bomb) {
 
 matrix = matrixGenerate(40, 35, 37, 45, 36, 30)
 
-io.sockets.emit("send matrix", matrix)
+grassArr = []
+grassEaterArr = []
+predatorArr = []
+pupleArr = []
+bombArr = []
 
- grassArr = []
- grassEaterArr = []
- predatorArr = []
- pupleArr = []
- bombArr = []
+
+Grass = require("./grass");
+GrassEater = require("./grassEater");
+Predator = require("./predator");
+Puple = require("./puple");
+Bomb = require("./bomb");
+
+
+function createObject() {
+
+
+
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+            if (matrix[y][x] == 1) {
+                let gr = new Grass(x, y)
+                grassArr.push(gr)
+            } else if (matrix[y][x] == 2) {
+                let gr = new GrassEater(x, y)
+                grassEaterArr.push(gr)
+            } else if (matrix[y][x] == 3) {
+                let gr = new Predator(x, y)
+                predatorArr.push(gr)
+            } else if (matrix[y][x] == 4) {
+                let gr = new Puple(x, y)
+                pupleArr.push(gr)
+            } else if (matrix[y][x] == 5) {
+                let gr = new Bomb(x, y)
+                bombArr.push(gr)
+            }
+        }
+    }
+}
+
+
+function game() {
+    for (let i = 0; i < grassArr.length; i++) {
+        grassArr[i].mul()
+    }
+
+    for (let i = 0; i < grassEaterArr.length; i++) {
+        grassEaterArr[i].eat()
+    }
+    for (let i = 0; i < predatorArr.length; i++) {
+        predatorArr[i].eat()
+    }
+    for (let i = 0; i < pupleArr.length; i++) {
+        pupleArr[i].eat()
+    }
+    for (let i = 0; i < bombArr.length; i++) {
+        bombArr[i].eat()
+    }
+
+    io.sockets.emit("send matrix", matrix)
+}
+
+setInterval(game, 200)
+
+
+io.on('connection', () => {
+    createObject(matrix);
+  });
+
+  var statistics = {};
+

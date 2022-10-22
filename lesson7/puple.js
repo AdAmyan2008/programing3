@@ -20,13 +20,13 @@ module.exports =  class Puple extends LivingCreature {
 
     chooseCell(character) {
         this.getNewCoordinates()
-        super.chooseCell(character)
-        return found;
+        return   super.chooseCell(character)
+        
     }
 
     mul() {
-        let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let emptyCellss = this.chooseCell(0)
+        var newCell = emptyCellss[Math.floor(Math.random() * emptyCellss.length)]
         if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]
@@ -39,8 +39,8 @@ module.exports =  class Puple extends LivingCreature {
 
     move() {
         this.energy--
-        let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let emptyCellss = this.chooseCell(0)
+        var newCell = emptyCellss[Math.floor(Math.random() * emptyCellss.length)]
         if (newCell && this.energy >= 0) {
             let newX = newCell[0]
             let newY = newCell[1]
@@ -54,10 +54,10 @@ module.exports =  class Puple extends LivingCreature {
     }
 
     eat() {
-        let emptyCelss = this.chooseCell(2)
-        let newCell = random(emptyCelss)
-        let emptyCelss1 = this.chooseCell(3)
-        let newCell1 = random(emptyCelss1)
+        let emptyCellss = this.chooseCell(2)
+        var newCell = emptyCellss[Math.floor(Math.random() * emptyCellss.length)]
+        let emptyCellss1 = this.chooseCell(3)
+        var newCell = emptyCellss1[Math.floor(Math.random() * emptyCellss.length)]
         if (newCell) {
             this.energy++
             let newX = newCell[0]
