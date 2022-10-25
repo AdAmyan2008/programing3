@@ -78,7 +78,7 @@ module.exports =  class Puple extends LivingCreature {
                 }
             }
 
-            } else if (newCell1) {
+            } else if (newCell) {
                 this.energy++
                 let newX = newCell1[0]
                 let newY = newCell1[1]

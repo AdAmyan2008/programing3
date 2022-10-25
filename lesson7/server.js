@@ -139,3 +139,17 @@ io.on('connection', () => {
 
   var statistics = {};
 
+setInterval(() => {
+statistics.grass = grassArr.lenght
+statistics.grassEater = grassEaterArr.lenght
+statistics.predator = predatorArr.lenght
+statistics.puple = pupleArr.lenght
+statistics.bomb = bombArr.lenght
+
+ fs.writeFile("statistic.json",JSON.stringify(statistics),function() {
+ console.log("send")
+})
+
+},1000);
+
+
