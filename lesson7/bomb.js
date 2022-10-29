@@ -59,7 +59,7 @@ module.exports =  class Bomb extends LivingCreature {
         var newCell = emptyCellss[Math.floor(Math.random() * emptyCellss.length)]
         let emptyCellss1 = this.chooseCell(3)
         var newCell = emptyCellss1[Math.floor(Math.random() * emptyCellss.length)]
-        if (newCell1) {
+        if (newCell) {
             this.energy++
             let newX = newCell[0]
             let newY = newCell[1]

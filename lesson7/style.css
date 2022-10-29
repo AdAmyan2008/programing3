@@ -1,0 +1,24 @@
+/* .button {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  } */
+
+  body{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      background: url("https://t3.ftcdn.net/jpg/04/76/66/96/360_F_476669635_6P4H8yAayrbWwhHaJiwdntr5If6QNp2P.jpg") no-repeat;
+      background-size: cover;
+  }
+  canvas{
+      display: flex;
+    margin: 0 auto;
+    border-radius: 20px;
+    margin-top: 30px;
+  }

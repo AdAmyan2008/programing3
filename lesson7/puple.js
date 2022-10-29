@@ -58,6 +58,8 @@ module.exports =  class Puple extends LivingCreature {
         var newCell = emptyCellss[Math.floor(Math.random() * emptyCellss.length)]
         let emptyCellss1 = this.chooseCell(3)
         var newCell = emptyCellss1[Math.floor(Math.random() * emptyCellss.length)]
+        let emptyCellss2 = this.chooseCell(6)
+        var newCell1 = emptyCellss2[Math.floor(Math.random() * emptyCellss.length)]
         if (newCell) {
             this.energy++
             let newX = newCell[0]
@@ -97,11 +99,14 @@ module.exports =  class Puple extends LivingCreature {
                     break;
                     }
                 }
+            } else if (newCell1){
+                this.die()
     
+            
                 } else {
                 this.move()
             }
-        }
+    }
 
         die() {
             matrix[this.y][this.x] = 0

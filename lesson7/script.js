@@ -1,8 +1,8 @@
 var socket = io()
 
+var side = 20;
 function setup() {
-    var side = 20;
-    createCanvas(40 * side, 40 * side);
+    createCanvas(25* side, 25 * side);
     background('#acacac');
 
 
@@ -24,6 +24,8 @@ function nkarel(matrix) {
                 fill("blue");
             } else if (matrix[y][x] == 5) {
                 fill("black");
+            }else if (matrix[y][x] == 6) {
+                fill("orange");
             }
             rect(x * side, y * side, side, side);
         }

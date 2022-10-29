@@ -15,7 +15,7 @@ server.listen(3000, () => {
 })
 
 
-function matrixGenerate(matLen, gr, grEat, pr, puple, bomb) {
+function matrixGenerate(matLen, gr, grEat, pr, puple, bomb, virus) {
     let matrix = []
     for (let i = 0; i < matLen; i++) {
         matrix.push([])
@@ -55,7 +55,7 @@ function matrixGenerate(matLen, gr, grEat, pr, puple, bomb) {
 
         }
     }
-    for (let i = 0; i < puple; i++) {
+    for (let i = 0; i < bomb; i++) {
         let x = Math.floor(Math.random() * matLen)
         let y = Math.floor(Math.random() * matLen)
         if (matrix[y][x] == 0) {
@@ -63,16 +63,25 @@ function matrixGenerate(matLen, gr, grEat, pr, puple, bomb) {
 
         }
     }
+    for (let i = 0; i < virus; i++) {
+        let x = Math.floor(Math.random() * matLen)
+        let y = Math.floor(Math.random() * matLen)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 6
+
+        }
+    }
     return matrix
 }
 
-matrix = matrixGenerate(40, 35, 37, 45, 36, 30)
+matrix = matrixGenerate(40, 35, 37, 45, 36, 30, 20)
 
 grassArr = []
 grassEaterArr = []
 predatorArr = []
 pupleArr = []
 bombArr = []
+virusArr = []
 
 
 Grass = require("./grass");
@@ -80,7 +89,7 @@ GrassEater = require("./grassEater");
 Predator = require("./predator");
 Puple = require("./puple");
 Bomb = require("./bomb");
-
+Virus = require("./virus");
 
 function createObject() {
 
@@ -103,6 +112,9 @@ function createObject() {
             } else if (matrix[y][x] == 5) {
                 let gr = new Bomb(x, y)
                 bombArr.push(gr)
+            }else if (matrix[y][x] == 6) {
+                let gr = new Virus(x, y)
+                virusArr.push(gr)
             }
         }
     }
@@ -126,6 +138,9 @@ function game() {
     for (let i = 0; i < bombArr.length; i++) {
         bombArr[i].eat()
     }
+    for (let i = 0; i < virusArr.length; i++) {
+        virusArr[i].mul()
+    }
 
     io.sockets.emit("send matrix", matrix)
 }
@@ -145,6 +160,8 @@ statistics.grassEater = grassEaterArr.lenght
 statistics.predator = predatorArr.lenght
 statistics.puple = pupleArr.lenght
 statistics.bomb = bombArr.lenght
+statistics.virus = virusArr.lenght
+
 
  fs.writeFile("statistic.json",JSON.stringify(statistics),function() {
  console.log("send")
