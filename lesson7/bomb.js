@@ -36,6 +36,22 @@ module.exports =  class Bomb extends LivingCreature {
             BombArr.push(newGr)
             this.energy = 10
         }
+    //     if (weath == "winter") {
+    //         this.energy -= 5;
+    //         this.multiply -= 5;
+    //     }
+    //     if (weath == "spring") {
+    //         this.energy += 3;
+    //         this.multiply += 3;
+    //     }
+    //     if (weath == "summer") {
+    //         this.energy += 2;
+    //         this.multiply += 2;
+    //     }
+    //     if (weath == "autumn") {
+    //         this.energy--;
+    //         this.multiply--;
+    // }
     }
 
     move() {

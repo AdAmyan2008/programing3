@@ -2,7 +2,8 @@ var LivingCreature = require("./LivingCreature")
 module.exports = class GrassEater extends LivingCreature {
     constructor(x, y) {
         super(x, y)
-        this.directions = [];
+        this.energy = 13
+       
 
     }
     getNewCoordinates() {
@@ -35,6 +36,22 @@ module.exports = class GrassEater extends LivingCreature {
             grassEaterArr.push(newGr)
             this.energy = 10
         }
+    //     if (weath == "winter") {
+    //         this.energy -= 2;
+    //         this.multiply -= 2;
+    //     }
+    //     if (weath == "spring") {
+    //         this.energy += 5;
+    //         this.multiply += 5;
+    //     }
+    //     if (weath == "summer") {
+    //         this.energy += 3;
+    //         this.multiply += 3;
+    //     }
+    //     if (weath == "autumn") {
+    //         this.energy--;
+    //         this.multiply--;
+    // }
     }
 
     move() {
