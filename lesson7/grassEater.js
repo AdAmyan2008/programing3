@@ -72,7 +72,6 @@ module.exports = class GrassEater extends LivingCreature {
 
     eat() {
         let emptyCellss = this.chooseCell(1)
-        console.log(emptyCellss);
         var newCell = emptyCellss[Math.floor(Math.random() * emptyCellss.length)]
         let emptyCellss1 = this.chooseCell(6)
         var newCell1 = emptyCellss1[Math.floor(Math.random() * emptyCellss.length)]
